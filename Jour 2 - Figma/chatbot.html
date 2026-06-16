@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura — Chatbot IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon">★</div>
+      <span class="logo-name">Aura</span>
+      <span class="badge">Pro</span>
+    </div>
+    <div class="sidebar-new">
+      <button class="btn-new">+ Nouvelle conversation</button>
+    </div>
+    <div class="sidebar-search">
+      <div class="search-box">
+        <input type="text" placeholder="Rechercher..." />
+      </div>
+    </div>
+    <div class="conversations">
+      <div class="conv-group">
+        <p class="conv-date">Aujourd'hui</p>
+        <button class="conv-item active">
+          <p class="conv-title">Apprentissage automatique</p>
+          <p class="conv-preview">Peux-tu m'expliquer comment...</p>
+        </button>
+        <button class="conv-item">
+          <p class="conv-title">Refactoring API REST</p>
+          <p class="conv-preview">J'ai un endpoint qui renvoie...</p>
+        </button>
+      </div>
+      <div class="conv-group">
+        <p class="conv-date">Hier</p>
+        <button class="conv-item">
+          <p class="conv-title">Analyse de données CSV</p>
+          <p class="conv-preview">Voici mon dataframe pandas...</p>
+        </button>
+        <button class="conv-item">
+          <p class="conv-title">Architecture microservices</p>
+          <p class="conv-preview">Quelle est la meilleure approche...</p>
+        </button>
+      </div>
+      <div class="conv-group">
+        <p class="conv-date">Sam 7 juin</p>
+        <button class="conv-item">
+          <p class="conv-title">Déploiement Docker</p>
+          <p class="conv-preview">Mon container ne démarre pas...</p>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-card">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <p class="user-name">Jean Dupont</p>
+          <p class="user-email">jean@dupont.fr</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="chat-header">
+      <h1 class="chat-title">Apprentissage automatique</h1>
+      <div class="header-actions">
+        <button class="model-select">Aura 2.1 ▾</button>
+      </div>
+    </header>
+
+    <main class="messages">
+      <div class="messages-inner">
+
+        <div class="message assistant">
+          <div class="avatar ai-avatar">✦</div>
+          <div class="message-body">
+            <div class="bubble assistant-bubble">Bonjour ! Je suis Aura, votre assistant IA. Comment puis-je vous aider aujourd'hui ?</div>
+            <span class="timestamp">14:02</span>
+          </div>
+        </div>
+
+        <div class="message user">
+          <div class="message-body">
+            <div class="bubble user-bubble">Peux-tu m'expliquer comment fonctionne l'apprentissage automatique en quelques phrases ?</div>
+            <span class="timestamp">14:03</span>
+          </div>
+          <div class="avatar user-avatar-el">JD</div>
+        </div>
+
+        <div class="message assistant">
+          <div class="avatar ai-avatar">✦</div>
+          <div class="message-body">
+            <div class="bubble assistant-bubble">
+              <p>L'apprentissage automatique est un sous-domaine de l'IA où les systèmes apprennent à partir de données.</p>
+              <p>On distingue trois grands types :</p>
+              <ul>
+                <li><strong>Supervisé</strong> — exemples étiquetés (spam / non-spam)</li>
+                <li><strong>Non supervisé</strong> — structures cachées sans labels</li>
+                <li><strong>Par renforcement</strong> — essais-erreurs avec récompense</li>
+              </ul>
+            </div>
+            <span class="timestamp">14:03</span>
+          </div>
+        </div>
+
+        <div class="message user">
+          <div class="message-body">
+            <div class="bubble user-bubble">Donne-moi un exemple concret avec du code Python.</div>
+            <span class="timestamp">14:05</span>
+          </div>
+          <div class="avatar user-avatar-el">JD</div>
+        </div>
+
+        <div class="message assistant">
+          <div class="avatar ai-avatar">✦</div>
+          <div class="message-body">
+            <div class="bubble assistant-bubble">Voici un exemple avec scikit-learn pour classifier des fleurs Iris :</div>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="code-copy" onclick="navigator.clipboard.writeText(this.closest('.code-block').querySelector('code').innerText)">Copier</button>
+              </div>
+              <pre class="code-content"><code>from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+# Charger les données
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Entraîner le modèle
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train)
+
+# Évaluer
+accuracy = clf.score(X_test, y_test)
+print(f"Précision : {accuracy:.2%}")  # → 96.67%</code></pre>
+            </div>
+            <span class="timestamp">14:05</span>
+          </div>
+        </div>
+
+        <div class="message assistant" id="typing" style="display:none">
+          <div class="avatar ai-avatar">✦</div>
+          <div class="message-body">
+            <div class="bubble assistant-bubble typing-bubble">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <div class="input-area">
+      <div class="input-wrapper">
+        <div class="input-box">
+          <textarea id="chat-input" placeholder="Écrivez votre message... (Shift+Entrée pour nouvelle ligne)" rows="1"></textarea>
+          <div class="input-actions">
+            <div class="input-left">
+              <button class="btn-tool">📎</button>
+              <button class="btn-tool">🎤</button>
+            </div>
+            <div class="input-right">
+              <span class="char-count" id="char-count"></span>
+              <button class="btn-send" id="send-btn" disabled>Envoyer →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="disclaimer">Aura peut faire des erreurs. Vérifiez les informations importantes.</p>
+    </div>
+  </div>
+
+</div>
+<script>
+  const textarea = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('send-btn');
+  const charCount = document.getElementById('char-count');
+  const typing = document.getElementById('typing');
+  const inner = document.querySelector('.messages-inner');
+
+  textarea.addEventListener('input', () => {
+    const len = textarea.value.length;
+    charCount.textContent = len > 0 ? len + ' car.' : '';
+    sendBtn.disabled = len === 0;
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
+  });
+
+  textarea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (!sendBtn.disabled) send(); }
+  });
+
+  function send() {
+    const text = textarea.value.trim();
+    if (!text) return;
+    const t = new Date().toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+    const msg = document.createElement('div');
+    msg.className = 'message user';
+    msg.innerHTML = `<div class="message-body"><div class="bubble user-bubble">${text.replace(/</g,'&lt;')}</div><span class="timestamp">${t}</span></div><div class="avatar user-avatar-el">JD</div>`;
+    inner.insertBefore(msg, typing);
+    textarea.value = ''; textarea.style.height = 'auto'; charCount.textContent = ''; sendBtn.disabled = true;
+    typing.style.display = 'flex';
+    inner.scrollTop = inner.scrollHeight;
+    setTimeout(() => {
+      typing.style.display = 'none';
+      const t2 = new Date().toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+      const bot = document.createElement('div');
+      bot.className = 'message assistant';
+      bot.innerHTML = `<div class="avatar ai-avatar">✦</div><div class="message-body"><div class="bubble assistant-bubble">Excellente question ! Je suis en train d'analyser votre demande.</div><span class="timestamp">${t2}</span></div>`;
+      inner.insertBefore(bot, typing);
+      inner.scrollTop = inner.scrollHeight;
+    }, 2000);
+  }
+  sendBtn.addEventListener('click', send);
+</script>
+</body>
+</html>
