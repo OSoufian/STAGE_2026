@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageElement.appendChild(textElement);
 
         chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
     chatForm.addEventListener("submit", async function (event) {
