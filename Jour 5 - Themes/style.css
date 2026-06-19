@@ -1,0 +1,382 @@
+/* Définition des variables pour le thème CLAIR par défaut */
+:root {
+    --bg-color-page: #f4f4f4;
+    --text-color-main: #333333;
+    --header-bg: #333333;
+    --header-text: #ffffff;
+    --footer-bg: #333333;
+    --footer-text: #aaaaaa;
+
+    --chat-container-bg: #ffffff;
+    --chat-container-border: #dddddd;
+    --chat-container-shadow: rgba(0, 0, 0, 0.1);
+
+    --chat-messages-bg: #ffffff;
+    --chat-messages-border: #eeeeee;
+
+    --user-message-bg: #007bff;
+    --user-message-text: #ffffff;
+    --ai-message-bg: #e9e9eb;
+    --ai-message-text: #333333;
+
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --input-text: #333333;
+    --input-placeholder-text: #999999;
+
+    --button-send-bg: #007bff;
+    --button-send-text: #ffffff;
+    --button-send-hover-bg: #0056b3;
+
+    --button-footer-bg: #6c757d;
+    --button-footer-text: #ffffff;
+    --button-footer-hover-bg: #5a6268;
+
+    --loader-text-color: #777777;
+    --spinner-border-color: rgba(0, 0, 0, 0.1);
+    --spinner-active-color: var(--button-send-bg);
+
+    --scrollbar-thumb-bg: #888888;
+    --scrollbar-thumb-hover-bg: #555555;
+
+    --reset-button-bg: #f44336;
+    --reset-button-text: #ffffff;
+    --reset-button-hover-bg: #d32f2f;
+}
+
+html[data-theme="dark"] {
+    --bg-color-page: #22272e;
+    --text-color-main: #c9d1d9;
+    --header-bg: #1c2128;
+    --header-text: #c9d1d9;
+    --footer-bg: #1c2128;
+    --footer-text: #768390;
+
+    --chat-container-bg: #2d333b;
+    --chat-container-border: #444c56;
+    --chat-container-shadow: rgba(0, 0, 0, 0.3);
+
+    --chat-messages-bg: #2d333b;
+    --chat-messages-border: #444c56;
+
+    --user-message-bg: #238636;
+    --user-message-text: #ffffff;
+    --ai-message-bg: #373e47;
+    --ai-message-text: #c9d1d9;
+
+    --input-bg: #22272e;
+    --input-border: #444c56;
+    --input-text: #c9d1d9;
+    --input-placeholder-text: #768390;
+
+    --button-send-bg: #238636;
+    --button-send-text: #ffffff;
+    --button-send-hover-bg: #2ea043;
+
+    --button-footer-bg: #373e47;
+    --button-footer-text: #c9d1d9;
+    --button-footer-hover-bg: #444c56;
+
+    --loader-text-color: #768390;
+    --spinner-border-color: rgba(255, 255, 255, 0.15);
+    --spinner-active-color: var(--button-send-bg);
+
+    --scrollbar-thumb-bg: #768390;
+    --scrollbar-thumb-hover-bg: #c9d1d9;
+
+    --reset-button-bg: #da3633;
+    --reset-button-text: #ffffff;
+    --reset-button-hover-bg: #f85149;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color-page);
+    color: var(--text-color-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.chat-container {
+    width: 80%;
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: var(--chat-container-bg);
+    padding: 20px;
+    border: 1px solid var(--chat-container-border);
+    box-shadow: 0 0 10px var(--chat-container-shadow);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+/* Zone des messages */
+.chat-messages,
+#chat-messages {
+    min-height: 300px;
+    height: 400px;
+    border: 1px solid var(--chat-messages-border);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--chat-messages-bg);
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+/* Message de base */
+.message {
+    max-width: 75%;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 18px;
+    background-color: var(--ai-message-bg);
+    color: var(--ai-message-text);
+    animation: fadeInFromBottom 0.4s ease-out forwards;
+}
+
+/* Message de l'utilisateur */
+.message.user {
+    margin-left: auto;
+    background-color: var(--user-message-bg);
+    color: var(--user-message-text);
+}
+
+/* Message de l'IA */
+.message.bot {
+    margin-right: auto;
+    background-color: var(--ai-message-bg);
+    color: var(--ai-message-text);
+}
+
+.loading-indicator {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--loader-text-color);
+}
+
+#chat-form {
+    display: flex;
+    margin-top: 20px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+#user-input::placeholder {
+    color: var(--input-placeholder-text);
+}
+
+.bouton {
+    background-color: var(--button-send-bg);
+    color: var(--button-send-text);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.bouton:hover {
+    background-color: var(--button-send-hover-bg);
+}
+
+/* Styles pour la scrollbar Chrome, Edge, Safari, Opera */
+#chat-messages::-webkit-scrollbar,
+.chat-messages::-webkit-scrollbar {
+    width: 10px;
+}
+
+#chat-messages::-webkit-scrollbar-track,
+.chat-messages::-webkit-scrollbar-track {
+    background: var(--bg-color-page);
+    border-radius: 10px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb,
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: 10px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb:hover,
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-bg);
+}
+
+.reset-button {
+    background-color: var(--reset-button-bg);
+    color: var(--reset-button-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    align-self: flex-start;
+}
+
+.reset-button:hover {
+    background-color: var(--reset-button-hover-bg);
+    transform: translateY(-1px);
+}
+
+/* Classe pour cacher le loader */
+.loader-hidden {
+    display: none !important;
+}
+
+#loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    color: var(--loader-text-color);
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--spinner-border-color);
+    border-left-color: var(--spinner-active-color);
+    border-radius: 50%;
+    animation: spinAnimation 0.8s linear infinite;
+    margin-right: 10px;
+}
+
+/* Tablette */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .chat-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    #user-input,
+    .bouton {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+}
+
+/* Téléphone */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    .chat-container {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .chat-messages,
+    #chat-messages {
+        min-height: 250px;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 15px;
+    }
+
+    #chat-form {
+        flex-direction: column;
+    }
+
+    #user-input {
+        margin-right: 0;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .bouton {
+        width: 100%;
+    }
+}
+
+@keyframes fadeInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spinAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+footer {
+    color: var(--footer-text);
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.footer-button {
+    background-color: var(--button-footer-bg);
+    color: var(--button-footer-text);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.footer-button:hover {
+    background-color: var(--button-footer-hover-bg);
+    transform: translateY(-1px);
+}
+
